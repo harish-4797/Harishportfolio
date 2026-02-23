@@ -37,16 +37,16 @@ export default function AboutSection() {
                     </h2>
                 </motion.div>
 
-                <div className="flex flex-col items-center gap-16">
+                <div className="flex flex-col items-center gap-16 text-center">
                     {/* Portrait card (Centered) */}
                     <motion.div
                         initial={{ opacity: 0, y: 40 }}
                         animate={inView ? { opacity: 1, y: 0 } : {}}
                         transition={{ duration: 0.7, delay: 0.2 }}
-                        className="relative w-full"
+                        className="relative w-full flex justify-center"
                     >
                         <div
-                            className="relative rounded-3xl overflow-hidden aspect-square max-w-sm mx-auto"
+                            className="relative rounded-3xl overflow-hidden aspect-square w-full max-w-sm"
                             style={{
                                 background: 'linear-gradient(135deg, rgba(59,130,246,0.15), rgba(139,92,246,0.15))',
                                 border: '1px solid rgba(59,130,246,0.2)',
@@ -88,7 +88,7 @@ export default function AboutSection() {
                             <div className="absolute bottom-6 left-0 right-0 flex justify-center">
                                 <div className="glass px-4 py-2 rounded-xl text-center">
                                     <p className="text-white font-bold text-sm">Nimmagadda Harish</p>
-                                    <p className="text-blue-400 text-xs font-mono">AI Systems Engineer</p>
+                                    <p className="text-blue-400 text-xs font-mono">Python Developer & Data Analyst</p>
                                 </div>
                             </div>
                         </div>
