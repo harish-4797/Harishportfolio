@@ -7,11 +7,11 @@ import dynamic from 'next/dynamic';
 const NeuralNetworkBG = dynamic(() => import('./NeuralNetworkBG'), { ssr: false });
 
 const roles = [
-    'AI Systems Engineer',
-    'Healthcare AI Developer',
-    'Data Intelligence Architect',
-    'Deep Learning Specialist',
+    'Python Developer',
+    'Data Analyst',
     'Full Stack Developer',
+    'Information Technology Graduate',
+    'AI Solutions Architect',
 ];
 
 function TypewriterText() {
@@ -107,10 +107,9 @@ export default function HeroSection() {
                     transition={{ duration: 0.6, delay: 3.4 }}
                     className="text-slate-400 text-lg md:text-xl max-w-3xl mx-auto mb-16 leading-relaxed font-light"
                 >
-                    I build intelligent systems that{' '}
-                    <span className="text-blue-400 font-semibold underline underline-offset-8 decoration-blue-500/30">detect diseases before symptoms escalate.</span>
+                    Turning raw data into <span className="text-blue-400 font-semibold underline underline-offset-8 decoration-blue-500/30">actionable business intelligence.</span>
                     <br className="hidden md:block" />
-                    Specialized in CNN · MobileNet · EfficientNet · Deep Learning for Healthcare.
+                    Specialized in Python · SQL · Power BI · Data Analytics & Full-Stack Development.
                 </motion.p>
 
                 {/* CTAs */}
