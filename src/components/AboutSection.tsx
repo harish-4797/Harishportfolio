@@ -103,24 +103,21 @@ export default function AboutSection() {
                     >
                         <div className="space-y-6 text-slate-400 leading-relaxed text-lg">
                             <p>
-                                From Information Technology undergraduate to building{' '}
-                                <span className="text-white font-semibold">AI systems that save lives</span> — my mission is bridging the gap between neural networks and healthcare solutions.
+                                I am an <span className="text-white font-semibold">Aspiring Information Technology professional</span> and a recent B.Tech graduate from Vasireddy Venkatadri Institute of Technology.
                             </p>
 
                             <p>
-                                During my tenure (2020–2024), I focused on{' '}
-                                <span className="text-blue-400 font-semibold">early-stage diagnostics</span>. Specifically, I engineered a multi-stage classification system for Alzheimer&apos;s detection using CNN and MobileNet, achieving high precision in identifying dementia markers.
+                                My mission is to apply my technical expertise in <span className="text-blue-400 font-semibold">Python and Data Analytics</span> to contribute to innovative projects that enhance organizational performance. I am a dynamic contributor eager to solve complex problems in a forward-thinking environment.
                             </p>
 
                             <p>
-                                My expertise extends to Diabetic Retinopathy detection using{' '}
-                                <span className="text-purple-400 font-semibold">EfficientNet-B5</span>, where I focused on severity grading to automate screening processes for underserved regions.
+                                Beyond code, I have a strong foundation in <span className="text-purple-400 font-semibold">Research and Academic Excellence</span>, with experience in research publications and conference presentations within the healthcare AI domain.
                             </p>
                         </div>
 
                         {/* Highlight tags */}
                         <div className="flex flex-wrap justify-center gap-3 pt-4">
-                            {['Deep Learning', 'Healthcare AI', 'CNN', 'MobileNet', 'EfficientNet-B5', 'Data Analytics', 'Python'].map((tag) => (
+                            {['Python', 'SQL', 'MySQL', 'Data Analytics', 'Power BI', 'HTML', 'CSS', 'Communication', 'Problem Solving'].map((tag) => (
                                 <span
                                     key={tag}
                                     className="px-4 py-1.5 rounded-full text-xs font-mono tracking-wider"

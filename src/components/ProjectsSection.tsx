@@ -7,22 +7,22 @@ const projects = [
     {
         id: 'alzheimer',
         number: '01',
-        title: "Early Alzheimer's Detection",
+        title: "Early Alzheimer’s Detection",
         subtitle: 'Healthcare AI · Deep Learning',
         description:
-            'A multi-stage dementia prediction system using CNN and MobileNet architectures trained on the ADNI dataset. Classifies MRI brain scans into Normal Cognition, Mild Cognitive Impairment, and Alzheimer\'s Disease stages with high accuracy — enabling early intervention before severe symptoms manifest.',
+            'Developed a deep learning model using CNN and Mobile-Net Architectures for early detection of Alzheimer’s Disease from MRI images. The project aims to mitigate disease severity by enabling detection before symptoms like memory loss escalate. Utilized the ADNI dataset for multi-stage dementia classification.',
         icon: '🧠',
         accent: '#3b82f6',
         glow: 'rgba(59,130,246,0.25)',
-        tags: ['CNN', 'MobileNet', 'TensorFlow', 'ADNI Dataset', 'MRI Classification', 'Python', 'Keras'],
+        tags: ['Python', 'Pandas', 'Numpy', 'Matplotlib', 'CNN', 'Mobile-Net', 'ADNI Dataset'],
         metrics: [
-            { label: 'Classification Accuracy', value: '94.2%', color: '#3b82f6' },
-            { label: 'Dataset Images', value: '6,400+', color: '#8b5cf6' },
-            { label: 'Disease Stages', value: '4 Classes', color: '#06b6d4' },
+            { label: 'Model Precision', value: 'High', color: '#3b82f6' },
+            { label: 'Framework', value: 'TensorFlow', color: '#8b5cf6' },
+            { label: 'Dataset', value: 'ADNI', color: '#06b6d4' },
         ],
         visual: (
             <div className="relative w-full h-full flex items-center justify-center">
-                {/* Animated brain visualization */}
+                {/* Visual remains same as it's thematic */}
                 <div className="relative">
                     {[0, 1, 2, 3].map((i) => (
                         <motion.div
@@ -45,16 +45,6 @@ const projects = [
                         🧠
                     </div>
                 </div>
-                {/* MRI scan lines */}
-                {[0, 1, 2, 3, 4].map((i) => (
-                    <motion.div
-                        key={i}
-                        className="absolute left-0 right-0 h-px"
-                        style={{ top: `${20 + i * 12}%`, background: 'rgba(59,130,246,0.3)' }}
-                        animate={{ opacity: [0, 0.8, 0], x: ['-100%', '100%'] }}
-                        transition={{ duration: 2.5, repeat: Infinity, delay: i * 0.4, ease: 'linear' }}
-                    />
-                ))}
             </div>
         ),
     },
@@ -64,30 +54,27 @@ const projects = [
         title: 'Diabetic Retinopathy Detection',
         subtitle: 'Healthcare AI · Computer Vision',
         description:
-            'An automated fundus image classification system using EfficientNet-B5 to detect and grade Diabetic Retinopathy severity. The model processes retinal photographs to identify disease progression from No DR to Proliferative DR, enabling mass screening without specialist intervention.',
+            'Developed a deep learning model using pre-trained EfficientNet-B5 on fundus images to classify disease severity with minimal preprocessing. This system helps in the early detection of Diabetic Retinopathy to prevent vision loss and blindness.',
         icon: '👁️',
         accent: '#8b5cf6',
         glow: 'rgba(139,92,246,0.25)',
-        tags: ['EfficientNet-B5', 'TensorFlow', 'Computer Vision', 'Fundus Images', 'Severity Grading', 'Python'],
+        tags: ['Python', 'Patlib', 'TensorFlow', 'Keras', 'EfficientNet-B5', 'Computer Vision'],
         metrics: [
-            { label: 'Model Architecture', value: 'EfficientNet-B5', color: '#8b5cf6' },
-            { label: 'Severity Grades', value: '5 Levels', color: '#3b82f6' },
-            { label: 'Task Type', value: 'Multi-class', color: '#06b6d4' },
+            { label: 'Architecture', value: 'EfficientNet-B5', color: '#8b5cf6' },
+            { label: 'Severity', value: '5 Grades', color: '#3b82f6' },
+            { label: 'Domain', value: 'Ophthalmology', color: '#06b6d4' },
         ],
         visual: (
             <div className="relative w-full h-full flex items-center justify-center">
-                {/* Eye animation */}
                 <div className="relative w-32 h-24 flex items-center justify-center">
                     <div className="w-32 h-20 rounded-full overflow-hidden flex items-center justify-center"
                         style={{ background: 'linear-gradient(135deg, rgba(139,92,246,0.2), rgba(59,130,246,0.1))', border: '1px solid rgba(139,92,246,0.4)' }}>
-                        {/* Iris */}
                         <motion.div
                             className="w-16 h-16 rounded-full flex items-center justify-center"
                             style={{ background: 'radial-gradient(circle, #4c1d95, #1e1b4b)' }}
                             animate={{ scale: [1, 1.08, 1] }}
                             transition={{ duration: 3, repeat: Infinity }}
                         >
-                            {/* Pupil */}
                             <motion.div
                                 className="w-6 h-6 rounded-full bg-black"
                                 animate={{ scale: [1, 0.7, 1] }}
@@ -95,67 +82,60 @@ const projects = [
                             />
                         </motion.div>
                     </div>
-                    {/* Scan line */}
-                    <motion.div
-                        className="absolute left-0 right-0 h-0.5"
-                        style={{ background: 'rgba(139,92,246,0.8)' }}
-                        animate={{ top: ['10%', '90%', '10%'], opacity: [0, 1, 0] }}
-                        transition={{ duration: 2.5, repeat: Infinity }}
-                    />
                 </div>
             </div>
         ),
     },
-    {
-        id: 'analytics',
+]; {
+    id: 'analytics',
         number: '03',
-        title: 'Business Analytics Dashboard',
-        subtitle: 'Data Analytics · Power BI',
-        description:
-            'End-to-end data pipeline and analytics solution built during my internship at Codegnan. Performed large-scale data cleaning and transformation using Pandas, developed interactive Power BI dashboards, and generated actionable business insights that directly influenced operational decisions.',
+            title: 'Business Analytics Dashboard',
+                subtitle: 'Data Analytics · Power BI',
+                    description:
+    'End-to-end data pipeline and analytics solution built during my internship at Codegnan. Performed large-scale data cleaning and transformation using Pandas, developed interactive Power BI dashboards, and generated actionable business insights that directly influenced operational decisions.',
         icon: '📊',
-        accent: '#06b6d4',
-        glow: 'rgba(6,182,212,0.25)',
-        tags: ['Python', 'Pandas', 'Power BI', 'Data Cleaning', 'SQL', 'Business Intelligence', 'Visualization'],
-        metrics: [
-            { label: 'Data Processed', value: '100K+ Rows', color: '#06b6d4' },
-            { label: 'Dashboard Views', value: 'Real-time', color: '#3b82f6' },
-            { label: 'Insights Generated', value: '20+ KPIs', color: '#8b5cf6' },
-        ],
-        visual: (
-            <div className="relative w-full h-full p-4 flex flex-col gap-2 justify-center">
-                {/* Mini dashboard UI */}
-                {[0.85, 0.62, 0.91, 0.44, 0.73].map((val, i) => (
-                    <div key={i} className="flex items-center gap-2">
-                        <span className="text-slate-500 text-xs font-mono w-12">Metric {i + 1}</span>
-                        <div className="flex-1 h-2 rounded-full bg-white/5">
-                            <motion.div
-                                className="h-full rounded-full"
-                                style={{ background: `linear-gradient(90deg, #06b6d4, #3b82f6)` }}
-                                initial={{ width: 0 }}
-                                animate={{ width: `${val * 100}%` }}
-                                transition={{ duration: 1.5, delay: i * 0.2, ease: 'easeOut' }}
-                            />
-                        </div>
-                        <span className="text-cyan-400 text-xs font-mono w-10">{Math.round(val * 100)}%</span>
-                    </div>
-                ))}
-                <div className="flex gap-2 mt-1">
-                    {['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'].map((m, i) => (
-                        <div key={m} className="flex-1 flex flex-col items-center gap-1">
-                            <motion.div
-                                className="w-full rounded-sm"
-                                style={{ background: 'rgba(6,182,212,0.5)', minHeight: 4 }}
-                                initial={{ height: 4 }}
-                                animate={{ height: `${[20, 35, 28, 45, 38, 52][i]}px` }}
-                                transition={{ duration: 1, delay: i * 0.1 + 0.5 }}
-                            />
-                            <span className="text-slate-600 text-xs">{m}</span>
-                        </div>
-                    ))}
-                </div>
-            </div>
-        ),
+            accent: '#06b6d4',
+                glow: 'rgba(6,182,212,0.25)',
+                    tags: ['Python', 'Pandas', 'Power BI', 'Data Cleaning', 'SQL', 'Business Intelligence', 'Visualization'],
+                        metrics: [
+                            { label: 'Data Processed', value: '100K+ Rows', color: '#06b6d4' },
+                            { label: 'Dashboard Views', value: 'Real-time', color: '#3b82f6' },
+                            { label: 'Insights Generated', value: '20+ KPIs', color: '#8b5cf6' },
+                        ],
+                            visual: (
+                                <div className="relative w-full h-full p-4 flex flex-col gap-2 justify-center">
+                                    {/* Mini dashboard UI */}
+                                    {[0.85, 0.62, 0.91, 0.44, 0.73].map((val, i) => (
+                                        <div key={i} className="flex items-center gap-2">
+                                            <span className="text-slate-500 text-xs font-mono w-12">Metric {i + 1}</span>
+                                            <div className="flex-1 h-2 rounded-full bg-white/5">
+                                                <motion.div
+                                                    className="h-full rounded-full"
+                                                    style={{ background: `linear-gradient(90deg, #06b6d4, #3b82f6)` }}
+                                                    initial={{ width: 0 }}
+                                                    animate={{ width: `${val * 100}%` }}
+                                                    transition={{ duration: 1.5, delay: i * 0.2, ease: 'easeOut' }}
+                                                />
+                                            </div>
+                                            <span className="text-cyan-400 text-xs font-mono w-10">{Math.round(val * 100)}%</span>
+                                        </div>
+                                    ))}
+                                    <div className="flex gap-2 mt-1">
+                                        {['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'].map((m, i) => (
+                                            <div key={m} className="flex-1 flex flex-col items-center gap-1">
+                                                <motion.div
+                                                    className="w-full rounded-sm"
+                                                    style={{ background: 'rgba(6,182,212,0.5)', minHeight: 4 }}
+                                                    initial={{ height: 4 }}
+                                                    animate={{ height: `${[20, 35, 28, 45, 38, 52][i]}px` }}
+                                                    transition={{ duration: 1, delay: i * 0.1 + 0.5 }}
+                                                />
+                                                <span className="text-slate-600 text-xs">{m}</span>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            ),
     },
 ];
 
