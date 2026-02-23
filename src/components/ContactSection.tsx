@@ -108,15 +108,15 @@ export default function ContactSection() {
                             {
                                 icon: '📍',
                                 label: 'Location',
-                                value: 'Andhra Pradesh, India',
+                                value: 'Guntur, Andhra Pradesh',
                                 sub: 'Open to remote & relocation',
                                 color: '#3b82f6',
                             },
                             {
-                                icon: '💼',
-                                label: 'Open To',
-                                value: 'AI/ML Roles • Data Science',
-                                sub: 'Full-time · Internship',
+                                icon: '📱',
+                                label: 'Phone',
+                                value: '+91 9959882964',
+                                sub: 'Available for calls',
                                 color: '#8b5cf6',
                             },
                             {

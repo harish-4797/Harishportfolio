@@ -33,7 +33,7 @@ export default function Footer() {
                 <div className="flex items-center gap-4">
                     {[
                         {
-                            href: 'https://linkedin.com',
+                            href: 'https://www.linkedin.com/in/harish-nimmagadda-30a3471a6/',
                             label: 'LinkedIn',
                             icon: (
                                 <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
@@ -42,7 +42,7 @@ export default function Footer() {
                             ),
                         },
                         {
-                            href: 'https://github.com',
+                            href: 'https://github.com/harish-4797',
                             label: 'GitHub',
                             icon: (
                                 <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
@@ -68,7 +68,7 @@ export default function Footer() {
                 {/* Copyright + back to top */}
                 <div className="flex items-center justify-between w-full max-w-lg">
                     <p className="text-slate-600 text-xs font-mono">
-                        © 2024 Nimmagadda Harish. All rights reserved.
+                        © 2025 Nimmagadda Harish. All rights reserved.
                     </p>
 
                     <motion.button

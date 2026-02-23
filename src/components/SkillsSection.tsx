@@ -5,59 +5,53 @@ import { motion, useInView } from 'framer-motion';
 
 const skillCategories = [
     {
-        title: 'AI & Deep Learning',
-        icon: '🧠',
+        title: 'Technical Stack',
+        icon: '🛠️',
         color: '#3b82f6',
         glow: 'rgba(59,130,246,0.3)',
         skills: [
-            { name: 'Python', level: 92 },
-            { name: 'TensorFlow / Keras', level: 88 },
-            { name: 'CNN Architecture', level: 90 },
-            { name: 'MobileNet', level: 85 },
-            { name: 'EfficientNet', level: 83 },
-            { name: 'PyTorch', level: 72 },
+            { name: 'Python', level: 95 },
+            { name: 'SQL', level: 88 },
+            { name: 'MySQL', level: 85 },
+            { name: 'Data Analytics', level: 92 },
+            { name: 'Power BI', level: 90 },
+            { name: 'HTML & CSS', level: 85 },
         ],
     },
     {
-        title: 'Data Intelligence',
-        icon: '📊',
+        title: 'Soft Skills',
+        icon: '🧠',
         color: '#8b5cf6',
         glow: 'rgba(139,92,246,0.3)',
         skills: [
-            { name: 'SQL / MySQL', level: 88 },
-            { name: 'Pandas / NumPy', level: 90 },
-            { name: 'Power BI', level: 82 },
-            { name: 'Data Visualization', level: 85 },
-            { name: 'Statistical Analysis', level: 78 },
-            { name: 'Excel / Sheets', level: 80 },
+            { name: 'Communication', level: 95 },
+            { name: 'Teamwork', level: 90 },
+            { name: 'Leadership', level: 85 },
+            { name: 'Problem Solving', level: 92 },
         ],
     },
     {
-        title: 'Web Development',
-        icon: '🌐',
+        title: 'Other Skills',
+        icon: '📚',
         color: '#06b6d4',
         glow: 'rgba(6,182,212,0.3)',
         skills: [
-            { name: 'HTML / CSS', level: 85 },
-            { name: 'React.js', level: 75 },
-            { name: 'JavaScript', level: 78 },
-            { name: 'REST APIs', level: 72 },
-            { name: 'Git / GitHub', level: 82 },
-            { name: 'Next.js', level: 68 },
+            { name: 'Research Publication', level: 92 },
+            { name: 'Conference Presentation', level: 88 },
+            { name: 'Deep Learning', level: 85 },
+            { name: 'Machine Learning', level: 82 },
         ],
     },
     {
-        title: 'Tools & Platforms',
+        title: 'Tools',
         icon: '⚙️',
         color: '#10b981',
         glow: 'rgba(16,185,129,0.3)',
         skills: [
             { name: 'VS Code', level: 95 },
-            { name: 'Google Colab', level: 90 },
-            { name: 'Jupyter Notebook', level: 88 },
-            { name: 'Linux / Terminal', level: 72 },
-            { name: 'Matplotlib / Seaborn', level: 85 },
-            { name: 'OpenCV', level: 75 },
+            { name: 'Pandas & Numpy', level: 92 },
+            { name: 'Excel', level: 88 },
+            { name: 'Matplotlib', level: 85 },
         ],
     },
 ];
@@ -80,13 +74,11 @@ function SkillCard({ category, index, inView }: { category: typeof skillCategori
                 transition: 'all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
             }}
         >
-            {/* Background glow */}
             <div
                 className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                 style={{ background: `radial-gradient(ellipse at top left, ${category.color}08, transparent 60%)` }}
             />
 
-            {/* Header */}
             <div className="flex items-center gap-3 mb-6">
                 <div
                     className="w-10 h-10 rounded-xl flex items-center justify-center text-lg"
@@ -99,7 +91,6 @@ function SkillCard({ category, index, inView }: { category: typeof skillCategori
                 </h3>
             </div>
 
-            {/* Skills */}
             <div className="space-y-4">
                 {category.skills.map((skill, i) => (
                     <div key={skill.name}>
@@ -149,7 +140,7 @@ export default function SkillsSection() {
                         <span className="gradient-text"> Arsenal</span>
                     </h2>
                     <p className="text-slate-500 mt-4 text-lg max-w-2xl mx-auto leading-relaxed">
-                        A precision toolkit built for AI, data, and the web — deployed on real healthcare problems.
+                        A precision toolkit built for AI and data analysis — based on real industry standards.
                     </p>
                 </motion.div>
 

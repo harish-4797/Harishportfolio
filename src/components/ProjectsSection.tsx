@@ -22,7 +22,6 @@ const projects = [
         ],
         visual: (
             <div className="relative w-full h-full flex items-center justify-center">
-                {/* Visual remains same as it's thematic */}
                 <div className="relative">
                     {[0, 1, 2, 3].map((i) => (
                         <motion.div
@@ -86,57 +85,6 @@ const projects = [
             </div>
         ),
     },
-]; {
-    id: 'analytics',
-        number: '03',
-            title: 'Business Analytics Dashboard',
-                subtitle: 'Data Analytics · Power BI',
-                    description:
-    'End-to-end data pipeline and analytics solution built during my internship at Codegnan. Performed large-scale data cleaning and transformation using Pandas, developed interactive Power BI dashboards, and generated actionable business insights that directly influenced operational decisions.',
-        icon: '📊',
-            accent: '#06b6d4',
-                glow: 'rgba(6,182,212,0.25)',
-                    tags: ['Python', 'Pandas', 'Power BI', 'Data Cleaning', 'SQL', 'Business Intelligence', 'Visualization'],
-                        metrics: [
-                            { label: 'Data Processed', value: '100K+ Rows', color: '#06b6d4' },
-                            { label: 'Dashboard Views', value: 'Real-time', color: '#3b82f6' },
-                            { label: 'Insights Generated', value: '20+ KPIs', color: '#8b5cf6' },
-                        ],
-                            visual: (
-                                <div className="relative w-full h-full p-4 flex flex-col gap-2 justify-center">
-                                    {/* Mini dashboard UI */}
-                                    {[0.85, 0.62, 0.91, 0.44, 0.73].map((val, i) => (
-                                        <div key={i} className="flex items-center gap-2">
-                                            <span className="text-slate-500 text-xs font-mono w-12">Metric {i + 1}</span>
-                                            <div className="flex-1 h-2 rounded-full bg-white/5">
-                                                <motion.div
-                                                    className="h-full rounded-full"
-                                                    style={{ background: `linear-gradient(90deg, #06b6d4, #3b82f6)` }}
-                                                    initial={{ width: 0 }}
-                                                    animate={{ width: `${val * 100}%` }}
-                                                    transition={{ duration: 1.5, delay: i * 0.2, ease: 'easeOut' }}
-                                                />
-                                            </div>
-                                            <span className="text-cyan-400 text-xs font-mono w-10">{Math.round(val * 100)}%</span>
-                                        </div>
-                                    ))}
-                                    <div className="flex gap-2 mt-1">
-                                        {['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'].map((m, i) => (
-                                            <div key={m} className="flex-1 flex flex-col items-center gap-1">
-                                                <motion.div
-                                                    className="w-full rounded-sm"
-                                                    style={{ background: 'rgba(6,182,212,0.5)', minHeight: 4 }}
-                                                    initial={{ height: 4 }}
-                                                    animate={{ height: `${[20, 35, 28, 45, 38, 52][i]}px` }}
-                                                    transition={{ duration: 1, delay: i * 0.1 + 0.5 }}
-                                                />
-                                                <span className="text-slate-600 text-xs">{m}</span>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div>
-                            ),
-    },
 ];
 
 function ProjectCard({ project, index, inView }: { project: typeof projects[0]; index: number; inView: boolean }) {
@@ -156,21 +104,17 @@ function ProjectCard({ project, index, inView }: { project: typeof projects[0]; 
             }}
             id={`project-${project.id}`}
         >
-            {/* Visual area */}
             <div
                 className="relative h-48 overflow-hidden"
                 style={{ background: `radial-gradient(ellipse at center, ${project.accent}15, transparent 70%), rgba(255,255,255,0.02)` }}
             >
                 {project.visual}
-                {/* Overlay gradient */}
                 <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#0a0f2e]/60" />
 
-                {/* Number badge */}
                 <div className="absolute top-4 left-4">
                     <span className="font-mono text-6xl font-black opacity-10 text-white">{project.number}</span>
                 </div>
 
-                {/* Icon */}
                 <div
                     className="absolute top-4 right-4 w-10 h-10 rounded-xl flex items-center justify-center text-lg"
                     style={{ background: `${project.accent}20`, border: `1px solid ${project.accent}40` }}
@@ -179,7 +123,6 @@ function ProjectCard({ project, index, inView }: { project: typeof projects[0]; 
                 </div>
             </div>
 
-            {/* Content */}
             <div className="p-7">
                 <p className="text-xs font-mono mb-2" style={{ color: project.accent }}>{project.subtitle}</p>
                 <h3
@@ -190,7 +133,6 @@ function ProjectCard({ project, index, inView }: { project: typeof projects[0]; 
                 </h3>
                 <p className="text-slate-400 text-sm leading-relaxed mb-6">{project.description}</p>
 
-                {/* Metrics */}
                 <div className="grid grid-cols-3 gap-3 mb-6">
                     {project.metrics.map((m) => (
                         <div key={m.label} className="text-center glass rounded-xl p-3">
@@ -202,7 +144,6 @@ function ProjectCard({ project, index, inView }: { project: typeof projects[0]; 
                     ))}
                 </div>
 
-                {/* Tags */}
                 <div className="flex flex-wrap gap-2">
                     {project.tags.map((tag) => (
                         <span
