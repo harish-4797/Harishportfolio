@@ -26,7 +26,7 @@ export default function Footer() {
 
                 {/* Tagline */}
                 <p className="text-slate-600 text-sm text-center font-mono">
-                    Building intelligent systems that detect diseases before symptoms escalate.
+                    Merging Web Development with AI to build intelligent, scalable applications.
                 </p>
 
                 {/* Social icons */}

@@ -58,7 +58,11 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className={`${inter.className} antialiased`}>{children}</body>
+      <body className={`${inter.className} antialiased`}>
+        <div className="page-wrapper">
+          {children}
+        </div>
+      </body>
     </html>
   );
 }

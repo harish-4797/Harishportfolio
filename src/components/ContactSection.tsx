@@ -1,10 +1,85 @@
 'use client';
 
 import { useRef, useState } from 'react';
-import { motion, useInView, AnimatePresence } from 'framer-motion';
+import { motion, useInView, AnimatePresence, useMotionValue, useTransform, useSpring } from 'framer-motion';
 
-const FORMSUBMIT_URL =
-    'https://formsubmit.co/ajax/nimmagaddaharish4797@gmail.com';
+const FORMSUBMIT_URL = 'https://formsubmit.co/ajax/nimmagaddaharish4797@gmail.com';
+
+function ContactInfoCard({ item, index, inView }: { item: any; index: number; inView: boolean }) {
+    const cardRef = useRef<HTMLDivElement>(null);
+    const [hovered, setHovered] = useState(false);
+
+    const x = useMotionValue(0);
+    const y = useMotionValue(0);
+
+    const mouseXSpring = useSpring(x);
+    const mouseYSpring = useSpring(y);
+
+    const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ['8deg', '-8deg']);
+    const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ['-8deg', '8deg']);
+
+    const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+        if (!cardRef.current) return;
+        const rect = cardRef.current.getBoundingClientRect();
+        const width = rect.width;
+        const height = rect.height;
+        const mouseX = e.clientX - rect.left;
+        const mouseY = e.clientY - rect.top;
+        const xPct = mouseX / width - 0.5;
+        const yPct = mouseY / height - 0.5;
+        x.set(xPct);
+        y.set(yPct);
+    };
+
+    const handleMouseLeave = () => {
+        setHovered(false);
+        x.set(0);
+        y.set(0);
+    };
+
+    return (
+        <motion.div
+            ref={cardRef}
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ delay: 0.3 + index * 0.1 }}
+            onMouseMove={handleMouseMove}
+            onMouseEnter={() => setHovered(true)}
+            onMouseLeave={handleMouseLeave}
+            className="relative w-full"
+            style={{ perspective: '1000px' }}
+        >
+            <motion.div
+                className="glass-strong rounded-2xl p-6 flex flex-col items-center text-center gap-3 gradient-border"
+                style={{
+                    rotateX: hovered ? rotateX : 0,
+                    rotateY: hovered ? rotateY : 0,
+                    transformStyle: 'preserve-3d',
+                }}
+            >
+                <div
+                    className="w-12 h-12 rounded-2xl flex items-center justify-center text-xl"
+                    style={{
+                        background: `${item.color}20`,
+                        border: `1px solid ${item.color}30`,
+                        transform: 'translateZ(40px)',
+                    }}
+                >
+                    {item.icon}
+                </div>
+                <div style={{ transform: 'translateZ(30px)' }}>
+                    <p className="text-xs font-mono text-slate-500 mb-1">
+                        {item.label}
+                    </p>
+                    <p className="text-white font-semibold text-sm mb-1">
+                        {item.value}
+                    </p>
+                    <p className="text-slate-500 text-xs">{item.sub}</p>
+                </div>
+            </motion.div>
+        </motion.div>
+    );
+}
 
 export default function ContactSection() {
     const ref = useRef(null);
@@ -15,6 +90,30 @@ export default function ContactSection() {
         'idle'
     );
     const [errors, setErrors] = useState<Record<string, string>>({});
+
+    const contactItems = [
+        {
+            icon: '📍',
+            label: 'Location',
+            value: 'Guntur, Andhra Pradesh',
+            sub: 'Open to remote & relocation',
+            color: '#3b82f6',
+        },
+        {
+            icon: '📱',
+            label: 'Phone',
+            value: '+91 9959882964',
+            sub: 'Available for calls',
+            color: '#8b5cf6',
+        },
+        {
+            icon: '✉️',
+            label: 'Email',
+            value: 'nimmagaddaharish4797@gmail.com',
+            sub: 'Response within 24 hours',
+            color: '#06b6d4',
+        },
+    ];
 
     /* ── Validation ── */
     const validate = () => {
@@ -83,7 +182,7 @@ export default function ContactSection() {
                     className="mb-20 text-center flex flex-col items-center"
                 >
                     <p className="text-blue-400 text-sm font-mono tracking-widest uppercase mb-3">
-                        05 · Contact
+                        06 · Contact
                     </p>
                     <h2
                         className="text-4xl sm:text-5xl font-black text-white"
@@ -104,55 +203,8 @@ export default function ContactSection() {
                 <div className="flex flex-col items-center gap-12 w-full max-w-4xl mx-auto">
                     {/* ── Top: Info cards (Row on large, Column on small) ── */}
                     <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
-                        {[
-                            {
-                                icon: '📍',
-                                label: 'Location',
-                                value: 'Guntur, Andhra Pradesh',
-                                sub: 'Open to remote & relocation',
-                                color: '#3b82f6',
-                            },
-                            {
-                                icon: '📱',
-                                label: 'Phone',
-                                value: '+91 9959882964',
-                                sub: 'Available for calls',
-                                color: '#8b5cf6',
-                            },
-                            {
-                                icon: '✉️',
-                                label: 'Email',
-                                value: 'nimmagaddaharish4797@gmail.com',
-                                sub: 'Response within 24 hours',
-                                color: '#06b6d4',
-                            },
-                        ].map((item, i) => (
-                            <motion.div
-                                key={item.label}
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={inView ? { opacity: 1, y: 0 } : {}}
-                                transition={{ delay: 0.3 + i * 0.1 }}
-                                className="glass-strong rounded-2xl p-6 flex flex-col items-center text-center gap-3 gradient-border"
-                            >
-                                <div
-                                    className="w-12 h-12 rounded-2xl flex items-center justify-center text-xl"
-                                    style={{
-                                        background: `${item.color}20`,
-                                        border: `1px solid ${item.color}30`,
-                                    }}
-                                >
-                                    {item.icon}
-                                </div>
-                                <div>
-                                    <p className="text-xs font-mono text-slate-500 mb-1">
-                                        {item.label}
-                                    </p>
-                                    <p className="text-white font-semibold text-sm mb-1">
-                                        {item.value}
-                                    </p>
-                                    <p className="text-slate-500 text-xs">{item.sub}</p>
-                                </div>
-                            </motion.div>
+                        {contactItems.map((item, i) => (
+                            <ContactInfoCard key={item.label} item={item} index={i} inView={inView} />
                         ))}
                     </div>
 

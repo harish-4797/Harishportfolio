@@ -1,7 +1,7 @@
 'use client';
 
-import { useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
+import { useRef, useState } from 'react';
+import { motion, useInView, useMotionValue, useTransform, useSpring } from 'framer-motion';
 
 const experiences = [
     {
@@ -40,33 +40,54 @@ const experiences = [
         ],
         skills: ['Full Stack', 'Machine Learning', 'Data Analysis', 'Problem Solving', 'Git'],
     },
-    {
-        title: 'B.Tech — Information Technology',
-        company: 'Vasireddy Venkatadri Institute of Technology',
-        location: 'Guntur, Andhra Pradesh',
-        period: '2020 – 2024',
-        type: 'Education',
-        color: '#06b6d4',
-        icon: '🎓',
-        description:
-            'Bachelor of Technology in Information Technology. Focused on applying deep learning to healthcare diagnostics as part of academic research.',
-        highlights: [
-            'Research Publication on Alzheimer\'s Detection',
-            'Conference Presentation on AI in Healthcare',
-            'Specialized in CNN and MobileNet Architectures',
-            'Core focus on Algorithms and Data Analytics',
-        ],
-        skills: ['Python', 'Deep Learning', 'SQL', 'Data Structures', 'Research', 'Healthcare AI'],
-    },
+
 ];
 
 function ExperienceCard({ exp, index, inView }: { exp: typeof experiences[0]; index: number; inView: boolean }) {
+    const cardRef = useRef<HTMLDivElement>(null);
+    const [hovered, setHovered] = useState(false);
+
+    const x = useMotionValue(0);
+    const y = useMotionValue(0);
+
+    const mouseXSpring = useSpring(x);
+    const mouseYSpring = useSpring(y);
+
+    const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ['8deg', '-8deg']);
+    const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ['-8deg', '8deg']);
+
+    const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+        if (!cardRef.current) return;
+        const rect = cardRef.current.getBoundingClientRect();
+        const width = rect.width;
+        const height = rect.height;
+        const mouseX = e.clientX - rect.left;
+        const mouseY = e.clientY - rect.top;
+        const xPct = mouseX / width - 0.5;
+        const yPct = mouseY / height - 0.5;
+        x.set(xPct);
+        y.set(yPct);
+    };
+
+    const handleMouseLeave = () => {
+        setHovered(false);
+        x.set(0);
+        y.set(0);
+    };
+
     return (
         <motion.div
+            ref={cardRef}
             initial={{ opacity: 0, x: -40 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.7, delay: index * 0.2 }}
+            onMouseMove={handleMouseMove}
+            onMouseEnter={() => setHovered(true)}
+            onMouseLeave={handleMouseLeave}
             className="relative flex gap-8"
+            style={{
+                perspective: '1200px',
+            }}
         >
             {/* Timeline line + node */}
             <div className="flex flex-col items-center">
@@ -74,7 +95,7 @@ function ExperienceCard({ exp, index, inView }: { exp: typeof experiences[0]; in
                     initial={{ scale: 0 }}
                     animate={inView ? { scale: 1 } : {}}
                     transition={{ duration: 0.5, delay: index * 0.2 + 0.3, type: 'spring' }}
-                    className="w-12 h-12 rounded-2xl flex items-center justify-center text-xl flex-shrink-0 z-10"
+                    className="w-12 h-12 rounded-2xl flex items-center justify-center text-xl flex-shrink-0 z-10 shadow-lg"
                     style={{
                         background: `linear-gradient(135deg, ${exp.color}30, ${exp.color}10)`,
                         border: `1px solid ${exp.color}50`,
@@ -98,14 +119,17 @@ function ExperienceCard({ exp, index, inView }: { exp: typeof experiences[0]; in
             </div>
 
             {/* Card */}
-            <div
+            <motion.div
                 className="glass-strong rounded-3xl p-7 mb-8 flex-1 group hover:border-opacity-50 transition-all duration-400"
                 style={{
                     border: `1px solid rgba(255,255,255,0.06)`,
+                    rotateX: hovered ? rotateX : 0,
+                    rotateY: hovered ? rotateY : 0,
+                    transformStyle: 'preserve-3d',
                 }}
             >
                 {/* Top row */}
-                <div className="flex flex-wrap items-start justify-between gap-4 mb-4">
+                <div className="flex flex-wrap items-start justify-between gap-4 mb-4" style={{ transform: 'translateZ(40px)' }}>
                     <div>
                         <div className="flex items-center gap-2 mb-1">
                             <span
@@ -128,10 +152,10 @@ function ExperienceCard({ exp, index, inView }: { exp: typeof experiences[0]; in
                     </div>
                 </div>
 
-                <p className="text-slate-400 text-sm leading-relaxed mb-5">{exp.description}</p>
+                <p className="text-slate-400 text-sm leading-relaxed mb-5" style={{ transform: 'translateZ(20px)' }}>{exp.description}</p>
 
                 {/* Highlights */}
-                <ul className="space-y-2 mb-5">
+                <ul className="space-y-2 mb-5" style={{ transform: 'translateZ(30px)' }}>
                     {exp.highlights.map((h, i) => (
                         <li key={i} className="flex items-start gap-2 text-sm text-slate-400">
                             <span style={{ color: exp.color }} className="mt-0.5 flex-shrink-0">▹</span>
@@ -141,7 +165,7 @@ function ExperienceCard({ exp, index, inView }: { exp: typeof experiences[0]; in
                 </ul>
 
                 {/* Skill tags */}
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-2" style={{ transform: 'translateZ(50px)' }}>
                     {exp.skills.map((s) => (
                         <span
                             key={s}
@@ -156,7 +180,7 @@ function ExperienceCard({ exp, index, inView }: { exp: typeof experiences[0]; in
                         </span>
                     ))}
                 </div>
-            </div>
+            </motion.div>
         </motion.div>
     );
 }

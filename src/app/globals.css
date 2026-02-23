@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
 @import "tailwindcss";
 
+
 :root {
   --bg-primary: #020817;
   --bg-secondary: #0a0f2e;
@@ -33,6 +34,15 @@ body {
   overflow-x: hidden;
   cursor: none;
   line-height: 1.6;
+}
+
+.page-wrapper {
+  max-width: 1200px;
+  /* Controls content width */
+  margin: 0 auto;
+  /* Centers horizontally */
+  padding: 0 24px;
+  /* Side spacing */
 }
 
 /* Custom Scrollbar */
@@ -137,24 +147,44 @@ body {
 }
 
 /* Ambient background orbs */
+@keyframes float-orb {
+
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+}
+
 .orb {
   position: absolute;
   border-radius: 50%;
   filter: blur(80px);
   pointer-events: none;
   opacity: 0.15;
+  animation: float-orb 20s ease-in-out infinite;
 }
 
 .orb-blue {
   background: radial-gradient(circle, #3b82f6, transparent 70%);
+  animation-delay: 0s;
 }
 
 .orb-purple {
   background: radial-gradient(circle, #8b5cf6, transparent 70%);
+  animation-delay: -5s;
 }
 
 .orb-cyan {
   background: radial-gradient(circle, #06b6d4, transparent 70%);
+  animation-delay: -10s;
 }
 
 /* Animated gradient border */
