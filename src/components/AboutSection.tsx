@@ -37,13 +37,13 @@ export default function AboutSection() {
                     </h2>
                 </motion.div>
 
-                <div className="grid lg:grid-cols-2 gap-16 items-center">
-                    {/* Left – portrait card */}
+                <div className="flex flex-col items-center gap-16">
+                    {/* Portrait card (Centered) */}
                     <motion.div
-                        initial={{ opacity: 0, x: -40 }}
-                        animate={inView ? { opacity: 1, x: 0 } : {}}
+                        initial={{ opacity: 0, y: 40 }}
+                        animate={inView ? { opacity: 1, y: 0 } : {}}
                         transition={{ duration: 0.7, delay: 0.2 }}
-                        className="relative"
+                        className="relative w-full"
                     >
                         <div
                             className="relative rounded-3xl overflow-hidden aspect-square max-w-sm mx-auto"
@@ -56,7 +56,6 @@ export default function AboutSection() {
                             {/* Avatar illustration */}
                             <div className="absolute inset-0 flex items-center justify-center">
                                 <div className="relative">
-                                    {/* Outer glow ring */}
                                     <div
                                         className="w-48 h-48 rounded-full flex items-center justify-center"
                                         style={{
@@ -66,7 +65,6 @@ export default function AboutSection() {
                                     >
                                         <div className="text-7xl select-none">🧠</div>
                                     </div>
-                                    {/* Orbit dots */}
                                     {[0, 1, 2, 3].map((i) => (
                                         <motion.div
                                             key={i}
@@ -87,83 +85,48 @@ export default function AboutSection() {
                                 </div>
                             </div>
 
-                            {/* Name badge */}
                             <div className="absolute bottom-6 left-0 right-0 flex justify-center">
                                 <div className="glass px-4 py-2 rounded-xl text-center">
                                     <p className="text-white font-bold text-sm">Nimmagadda Harish</p>
                                     <p className="text-blue-400 text-xs font-mono">AI Systems Engineer</p>
                                 </div>
                             </div>
-
-                            {/* Location badge */}
-                            <div className="absolute top-6 right-6">
-                                <div className="glass px-3 py-1.5 rounded-lg flex items-center gap-1.5">
-                                    <span className="text-xs">📍</span>
-                                    <span className="text-xs text-slate-300">Andhra Pradesh, India</span>
-                                </div>
-                            </div>
                         </div>
-
-                        {/* Floating tech badges */}
-                        <motion.div
-                            animate={{ y: [0, -10, 0] }}
-                            transition={{ duration: 3, repeat: Infinity }}
-                            className="absolute -top-4 -right-4 glass px-3 py-2 rounded-xl text-xs font-mono text-blue-400 hidden lg:block"
-                        >
-                            🤖 CNN + MobileNet
-                        </motion.div>
-                        <motion.div
-                            animate={{ y: [0, 10, 0] }}
-                            transition={{ duration: 4, repeat: Infinity }}
-                            className="absolute -bottom-4 -left-4 glass px-3 py-2 rounded-xl text-xs font-mono text-purple-400 hidden lg:block"
-                        >
-                            📊 EfficientNet-B5
-                        </motion.div>
                     </motion.div>
 
-                    {/* Right – story text */}
+                    {/* Story text (Centered) */}
                     <motion.div
-                        initial={{ opacity: 0, x: 40 }}
-                        animate={inView ? { opacity: 1, x: 0 } : {}}
+                        initial={{ opacity: 0, y: 40 }}
+                        animate={inView ? { opacity: 1, y: 0 } : {}}
                         transition={{ duration: 0.7, delay: 0.3 }}
-                        className="space-y-6"
+                        className="max-w-3xl text-center space-y-8"
                     >
-                        <div className="space-y-4 text-slate-400 leading-relaxed">
-                            <p className="text-lg">
+                        <div className="space-y-6 text-slate-400 leading-relaxed text-lg">
+                            <p>
                                 From Information Technology undergraduate to building{' '}
-                                <span className="text-white font-medium">AI systems that save lives</span> — that&apos;s not a traditional career path. That&apos;s a mission.
+                                <span className="text-white font-semibold">AI systems that save lives</span> — my mission is bridging the gap between neural networks and healthcare solutions.
                             </p>
 
                             <p>
-                                During my B.Tech (2020–2024), I didn&apos;t just study algorithms — I{' '}
-                                <span className="text-blue-400 font-medium">applied them to real medical problems</span>.
-                                I built a Deep Learning model for Early Alzheimer&apos;s Detection using CNN & MobileNet on the ADNI dataset,
-                                classifying MRI scans across multiple stages of dementia progression.
+                                During my tenure (2020–2024), I focused on{' '}
+                                <span className="text-blue-400 font-semibold">early-stage diagnostics</span>. Specifically, I engineered a multi-stage classification system for Alzheimer&apos;s detection using CNN and MobileNet, achieving high precision in identifying dementia markers.
                             </p>
 
                             <p>
-                                Then I tackled Diabetic Retinopathy — using{' '}
-                                <span className="text-purple-400 font-medium">EfficientNet-B5</span> to classify fundus images and grade
-                                severity levels, potentially enabling mass screening of millions who lack access to ophthalmologists.
-                            </p>
-
-                            <p>
-                                As a <span className="text-cyan-400 font-medium">Data Analyst Intern at Codegnan</span>, I turned raw business
-                                data into actionable insights using Python, Pandas, and Power BI. At{' '}
-                                <span className="text-blue-400 font-medium">Data Valley Virtual</span>, I expanded into full-stack development
-                                with ML system integration.
+                                My expertise extends to Diabetic Retinopathy detection using{' '}
+                                <span className="text-purple-400 font-semibold">EfficientNet-B5</span>, where I focused on severity grading to automate screening processes for underserved regions.
                             </p>
                         </div>
 
                         {/* Highlight tags */}
-                        <div className="flex flex-wrap gap-2">
+                        <div className="flex flex-wrap justify-center gap-3 pt-4">
                             {['Deep Learning', 'Healthcare AI', 'CNN', 'MobileNet', 'EfficientNet-B5', 'Data Analytics', 'Python'].map((tag) => (
                                 <span
                                     key={tag}
-                                    className="px-3 py-1 rounded-full text-xs font-mono"
+                                    className="px-4 py-1.5 rounded-full text-xs font-mono tracking-wider"
                                     style={{
-                                        background: 'rgba(59,130,246,0.1)',
-                                        border: '1px solid rgba(59,130,246,0.2)',
+                                        background: 'rgba(59,130,246,0.08)',
+                                        border: '1px solid rgba(59,130,246,0.15)',
                                         color: '#93c5fd',
                                     }}
                                 >

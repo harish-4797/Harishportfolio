@@ -153,9 +153,11 @@ export default function SkillsSection() {
                     </p>
                 </motion.div>
 
-                <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-6">
+                <div className="flex flex-wrap justify-center gap-6">
                     {skillCategories.map((cat, i) => (
-                        <SkillCard key={cat.title} category={cat} index={i} inView={inView} />
+                        <div key={cat.title} className="w-full md:w-[calc(50%-12px)] xl:w-[calc(25%-18px)]">
+                            <SkillCard category={cat} index={i} inView={inView} />
+                        </div>
                     ))}
                 </div>
             </div>

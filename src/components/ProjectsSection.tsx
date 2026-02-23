@@ -271,9 +271,11 @@ export default function ProjectsSection() {
                     </p>
                 </motion.div>
 
-                <div className="grid lg:grid-cols-3 gap-8">
+                <div className="flex flex-wrap justify-center gap-8">
                     {projects.map((project, i) => (
-                        <ProjectCard key={project.id} project={project} index={i} inView={inView} />
+                        <div key={project.id} className="w-full md:w-[calc(50%-16px)] xl:w-[calc(33.333%-22px)]">
+                            <ProjectCard project={project} index={i} inView={inView} />
+                        </div>
                     ))}
                 </div>
             </div>

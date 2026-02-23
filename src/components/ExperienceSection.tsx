@@ -189,7 +189,7 @@ export default function ExperienceSection() {
                     </p>
                 </motion.div>
 
-                <div>
+                <div className="flex flex-col items-center w-full max-w-4xl mx-auto">
                     {experiences.map((exp, i) => (
                         <ExperienceCard key={exp.company} exp={exp} index={i} inView={inView} />
                     ))}
